@@ -1,0 +1,12 @@
+{% extends ""base.html" %}
+
+{% block title %}
+Mahsulotlar sahifasi
+{% endblock %}
+
+{% block content %}
+    <h1>Mahsulot sahifasi</h1>
+    {% for product in products %}
+        <p>{{product.name}}</p>
+    {% endfor %}
+{% endblock %}
