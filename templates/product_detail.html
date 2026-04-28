@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ product.name }}</h2>
+<p>{{ product.category.name }}</p>
+<p>{{ product.price }}</p>
+<p>{{ product.description }}</p>
+
+{% if product.is_available %}
+    <p>Mavjud</p>
+{% else %}
+    <p>Mavjud emas</p>
+{% endif %}
+
+{% endblock %}
