@@ -2,15 +2,26 @@
 
 {% block content %}
 
-<h2>{{ product.name }}</h2>
-<p>{{ product.category.name }}</p>
-<p>{{ product.price }}</p>
-<p>{{ product.description }}</p>
+<div class="max-w-2xl mx-auto bg-white p-6 rounded shadow">
 
-{% if product.is_available %}
-    <p>Mavjud</p>
-{% else %}
-    <p>Mavjud emas</p>
-{% endif %}
+    {% if product.image %}
+        <img src="{{ product.image.url }}" class="w-full h-64 object-cover rounded mb-4">
+    {% endif %}
+
+    <h2 class="text-2xl font-bold mb-2">{{ product.name }}</h2>
+
+    <p class="text-gray-500 mb-2">Category: {{ product.category.name }}</p>
+
+    <p class="text-xl text-blue-600 font-bold mb-2">{{ product.price }} $</p>
+
+    <p class="mb-3">{{ product.description }}</p>
+
+    {% if product.is_available %}
+        <p class="text-green-500">Available</p>
+    {% else %}
+        <p class="text-red-500">Not available</p>
+    {% endif %}
+
+</div>
 
 {% endblock %}

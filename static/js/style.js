@@ -1,15 +1,15 @@
-const authWrapper = document.querySelector('.auth-wrapper');
-const loginTrigger = document.querySelector('.login-trigger');
-const registerTrigger = document.querySelector('.register-trigger');
+document.addEventListener('DOMContentLoaded', () => {
+    const authWrapper = document.querySelector('.auth-wrapper');
+    const registerBtn = document.querySelector('.switch-link a'); // Sign Up linki
 
-if (registerTrigger && loginTrigger && authWrapper) {
-    registerTrigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        authWrapper.classList.add('toggled');
-    });
-
-    loginTrigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        authWrapper.classList.remove('toggled');
-    });
-}
+    if (registerBtn) {
+        registerBtn.addEventListener('click', (e) => {
+            // Agar faqat effekt bermoqchi bo'lsangiz:
+            // e.preventDefault();
+            authWrapper.style.transform = "scale(1.05)";
+            setTimeout(() => {
+                authWrapper.style.transform = "scale(1)";
+            }, 300);
+        });
+    }
+});

@@ -1,43 +1,110 @@
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background: #111428;
+/* --- 1. ASOSIY SAHIFA (HOME PAGE) UCHUN ODDIY HOLAT --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f2f5; /* Home page ochiq foni */
+}
+
+/* --- 2. FAQAT LOGIN SAHIFASI UCHUN DIZAYN --- */
+/* Faqat 'login-page-body' klassi bo'lgan body-da ishlaydi */
+.login-page-body {
+    background-color: #0b0d17 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 100vh !important;
+    margin: 0;
+}
+
+/* Neon quti */
+.login-page-body .auth-wrapper {
+    display: flex !important;
+    width: 850px;
+    height: 480px;
+    background: #0d1b2a;
+    border: 2px solid #00f2fe;
+    box-shadow: 0 0 25px #00f2fe;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Forma qismi */
+.login-page-body .credentials-panel {
+    flex: 1.2;
+    padding: 40px;
     color: white;
 }
 
-.logo {
-    font-size: 20px;
+.login-page-body .field-wrapper {
+    position: relative;
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.login-page-body .field-wrapper input {
+    width: 100%;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+}
+
+.login-page-body .field-wrapper label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: rgba(255, 255, 255, 0.5);
+    transition: 0.3s;
+}
+
+.login-page-body .field-wrapper input:focus ~ label,
+.login-page-body .field-wrapper input:valid ~ label {
+    top: -15px;
+    font-size: 12px;
+    color: #00f2fe;
+}
+
+.login-page-body .field-wrapper i {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    color: #00f2fe;
+}
+
+/* Tugma */
+.login-page-body .submit-button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    background: #00f2fe;
+    color: #0d1b2a;
     font-weight: bold;
-    color: #00d4ff;
+    cursor: pointer;
 }
 
-.nav-menu {
+/* Welcome qismi (Diagonal) */
+.login-page-body .welcome-section {
+    flex: 1;
+    background: #00f2fe;
     display: flex;
-    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    color: #0d1b2a;
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
-.nav-menu a {
-    text-decoration: none;
-    color: #ccc;
-    transition: 0.3s;
+.login-page-body .welcome-section h2 {
+    font-size: 40px;
+    font-weight: 900;
 }
 
-.nav-menu a:hover {
-    color: #00d4ff;
-}
-
-.login-btn {
-    padding: 6px 16px;
-    border: 2px solid #00d4ff;
-    border-radius: 20px;
-    text-decoration: none;
+/* Navbaringiz (Home page uchun) */
+.navbar {
+    /* Navbaringizning avvalgi kodi bo'lsa shu yerga qo'shing */
+    background: #111428; 
     color: white;
-    transition: 0.3s;
-}
-
-.login-btn:hover {
-    background: #00d4ff;
-    color: black;
+    padding: 15px;
 }
