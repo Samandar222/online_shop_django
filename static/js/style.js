@@ -1,15 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const authWrapper = document.querySelector('.auth-wrapper');
-    const registerBtn = document.querySelector('.switch-link a'); // Sign Up linki
+const container = document.getElementById('container');
 
-    if (registerBtn) {
-        registerBtn.addEventListener('click', (e) => {
-            // Agar faqat effekt bermoqchi bo'lsangiz:
-            // e.preventDefault();
-            authWrapper.style.transform = "scale(1.05)";
-            setTimeout(() => {
-                authWrapper.style.transform = "scale(1)";
-            }, 300);
-        });
-    }
+const registerTrigger = document.querySelector('.register-trigger');
+const loginTrigger = document.querySelector('.login-trigger');
+
+registerTrigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    container.classList.add("toggled");
+});
+
+loginTrigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    container.classList.remove("toggled");
 });

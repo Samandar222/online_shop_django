@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="max-w-xl mx-auto mt-10 bg-white shadow rounded-xl p-6">
+
+    <h2 class="text-2xl font-bold mb-6 text-center">
+        Shaxsiy kabinet
+    </h2>
+
+    <p class="mb-2">
+        <b>Username:</b> {{ user.username }}
+    </p>
+
+    <p class="mb-2">
+        <b>Ism:</b> {{ user.first_name }}
+    </p>
+
+    <p class="mb-2">
+        <b>Familiya:</b> {{ user.last_name }}
+    </p>
+
+    <p class="mb-2">
+        <b>Email:</b> {{ user.email }}
+    </p>
+
+</div>
+
+{% endblock content %}

@@ -8,8 +8,10 @@ class UserManager(BaseUserManager):
 
         if not first_name:
             raise ValidationError("Ism bo'lishi kerak")
+
         if not last_name:
             raise ValidationError("Familya bo'lishi kerak")
+
         if not phone_number:
             raise ValidationError("Telefon raqam bo'lishi kerak")
 
@@ -22,6 +24,7 @@ class UserManager(BaseUserManager):
 
         user.set_password(password)
         user.save(using=self._db)
+
         return user
 
     def create_superuser(self, first_name, last_name, phone_number, password=None, **extra_fields):
@@ -31,6 +34,7 @@ class UserManager(BaseUserManager):
 
         if extra_fields.get('is_staff') is not True:
             raise ValidationError("Superuser is_staff=True bo'lishi kerak")
+
         if extra_fields.get('is_superuser') is not True:
             raise ValidationError("Superuser is_superuser=True bo'lishi kerak")
 

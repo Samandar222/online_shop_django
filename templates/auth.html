@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Auth</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="login-page-body">
+
+<div class="auth-wrapper" id="container">
+
+    <!-- LOGIN -->
+    <div class="credentials-panel signin">
+        <h2>Login</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="field-wrapper">
+                <input type="text" name="phone_number" required>
+                <label>Username</label>
+                <i class="fa fa-user"></i>
+            </div>
+
+            <div class="field-wrapper">
+                <input type="password" name="password" required>
+                <label>Password</label>
+                <i class="fa fa-lock"></i>
+            </div>
+
+            <button type="submit" name="login" class="submit-button">Login</button>
+        </form>
+
+        <div class="switch-link">
+            <a href="#" class="register-trigger">Sign Up</a>
+        </div>
+    </div>
+
+        <!-- WELCOME LOGIN
+    <div class="welcome-section signin">
+        <h2>WELCOME BACK!</h2>
+    </div> -->
+
+    <!-- REGISTER -->
+    <div class="credentials-panel signup">
+        <h2>Register</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="field-wrapper">
+                <input type="text" name="first_name" required>
+                <label>Ism</label>
+                <i class="fa fa-user"></i>
+            </div>
+
+            <div class="field-wrapper">
+                <input type="text" name="last_name" required>
+                <label>Familiya</label>
+                <i class="fa fa-user"></i>
+            </div>
+
+            <div class="field-wrapper">
+                <input type="text" name="phone_number" required>
+                <label>Telefon raqam</label>
+                <i class="fa fa-user"></i>
+            </div>
+
+            <div class="field-wrapper">
+                <input type="password" name="password" required>
+                <label>Password</label>
+                <i class="fa fa-lock"></i>
+            </div>
+
+            <div class="field-wrapper">
+                <input type="password" name="confirm_password" required>
+                <label>Confirm Password</label>
+                <i class="fa fa-lock"></i>
+            </div>
+
+            <button type="submit" name="register" class="submit-button">Register</button>
+        </form>
+
+        <div class="switch-link">
+            <a href="#" class="login-trigger">Login</a>
+        </div>
+    </div>
+
+    <!--  WELCOME REGISTER -->
+    <div class="welcome-section signup">
+        <h2>WELCOME BACK!</h2>
+    </div>
+
+</div>
+
+<script src="{% static 'js/style.js' %}"></script>
+
+</body>
+</html>

@@ -1,27 +1,92 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
+<div class="mx-auto max-w-[1120px] grid grid-cols-12 gap-10 mt-10">
 
-<div class="max-w-2xl mx-auto bg-white p-6 rounded shadow">
+    <!-- MESSAGES -->
+    {% if messages %}
+        {% for message in messages %}
+            <small class="col-span-12 text-green-500 text-center font-semibold">
+                {{ message }}
+            </small>
+        {% endfor %}
+    {% endif %}
 
+    <!-- IMAGE -->
     {% if product.image %}
-        <img src="{{ product.image.url }}" class="w-full h-64 object-cover rounded mb-4">
+        <img src="{{ product.image.url }}" class="col-span-6 rounded-xl object-cover">
     {% endif %}
 
-    <h2 class="text-2xl font-bold mb-2">{{ product.name }}</h2>
+    <!-- DETAILS -->
+    <div class="col-span-6 flex flex-col gap-4">
 
-    <p class="text-gray-500 mb-2">Category: {{ product.category.name }}</p>
+        <h2 class="text-3xl font-bold text-gray-800">{{ product.name }}</h2>
 
-    <p class="text-xl text-blue-600 font-bold mb-2">{{ product.price }} $</p>
+        <p class="text-gray-500">
+            {{ product.description|linebreaksbr }}
+        </p>
 
-    <p class="mb-3">{{ product.description }}</p>
+        <p class="text-lg text-blue-600 font-bold">
+            {{ product.price }} $
+        </p>
 
-    {% if product.is_available %}
-        <p class="text-green-500">Available</p>
-    {% else %}
-        <p class="text-red-500">Not available</p>
-    {% endif %}
+        <p class="text-gray-500">
+            Category: {{ product.category.name }}
+        </p>
 
+        {% if product.is_available %}
+            <p class="text-green-500 font-semibold">Available</p>
+        {% else %}
+            <p class="text-red-500 font-semibold">Not available</p>
+        {% endif %}
+
+        <!-- ADD TO CART FORM (SENIKI SAQLANDI) -->
+        <form action="" method="post" class="flex flex-col gap-4 mt-4">
+            {% csrf_token %}
+
+            <div class="w-[250px] flex items-center justify-between">
+
+                <button type="button" id="minusBtn"
+                    class="bg-yellow-500 text-white py-2 px-8 rounded-lg hover:bg-yellow-600 active:scale-95 transition">
+                    -
+                </button>
+
+                <input name="quantity" id="displayValue" value="1" type="text"
+                    class="text-gray-700 max-w-[100px] border-2 border-gray-400 rounded-lg text-center focus:outline-none">
+
+                <button type="button" id="plusBtn"
+                    class="bg-yellow-500 text-white py-2 px-8 rounded-lg hover:bg-yellow-600 active:scale-95 transition">
+                    +
+                </button>
+
+            </div>
+
+            <button type="submit"
+                class="w-[250px] bg-yellow-500 text-white py-2 px-8 rounded-lg hover:bg-yellow-600 active:scale-95 transition flex items-center justify-center gap-2">
+                <span class="material-icons">shopping_cart</span>
+                Add to cart
+            </button>
+
+        </form>
+    </div>
 </div>
 
-{% endblock %}
+<!-- JS -->
+<script>
+    const minusBtn = document.getElementById("minusBtn");
+    const plusBtn = document.getElementById("plusBtn");
+    const displayValue = document.getElementById("displayValue");
+
+    plusBtn.addEventListener("click", () => {
+        displayValue.value = Number(displayValue.value) + 1;
+    });
+
+    minusBtn.addEventListener("click", () => {
+        let result = Number(displayValue.value) - 1;
+        if (result >= 1) {
+            displayValue.value = result;
+        }
+    });
+</script>
+
+{% endblock content %}

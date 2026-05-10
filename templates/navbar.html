@@ -8,15 +8,56 @@
 
     <!-- MENU -->
     <nav class="flex gap-6">
-        <a href="#" class="text-gray-300 hover:text-cyan-400 transition">Kategoriyalar</a>
-        <a href="#" class="text-gray-300 hover:text-cyan-400 transition">Barcha maxsulotlar</a>
-        <a href="#" class="text-gray-300 hover:text-cyan-400 transition">Aksiyadagi maxsulotlar</a>
+        <a href="#" class="text-gray-300 hover:text-cyan-400 transition">
+            Kategoriyalar
+        </a>
+
+        <a href="{% url 'products' %}" class="text-gray-300 hover:text-cyan-400 transition">
+            Barcha maxsulotlar
+        </a>
+
+        <a href="#" class="text-gray-300 hover:text-cyan-400 transition">
+            Aksiyadagi maxsulotlar
+        </a>
     </nav>
 
-    <!-- LOGIN -->
-    <a href="{% url 'login' %}" class="flex items-center gap-2 bg-cyan-400 text-black px-4 py-1 rounded hover:bg-cyan-500 transition">
-        <span class="material-icons text-sm">login</span>
-     Kirish
-    </a>
+    <!-- AUTH -->
+    <div class="flex gap-4 items-center">
+
+        {% if user.is_authenticated %}
+
+            <!-- PROFILE -->
+            <a href="{% url 'profile' %}"
+               class="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition">
+
+                <span class="material-icons">account_circle</span>
+
+                {{ user.first_name }}
+
+            </a>
+
+            <!-- LOGOUT -->
+            <a href="{% url 'signout' %}"
+               class="flex items-center gap-1 bg-red-500 px-3 py-1 rounded hover:bg-red-600 transition">
+
+                <span class="material-icons text-sm">logout</span>
+                Chiqish
+
+            </a>
+
+        {% else %}
+
+            <!-- LOGIN -->
+            <a href="{% url 'signin' %}"
+               class="flex items-center gap-2 bg-cyan-400 text-black px-4 py-1 rounded hover:bg-cyan-500 transition">
+
+                <span class="material-icons text-sm">login</span>
+                Kirish
+
+            </a>
+
+        {% endif %}
+
+    </div>
 
 </header>

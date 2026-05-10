@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-[1200px] mx-auto px-4 py-10">
+
+    <h1 class="text-center text-3xl font-bold text-gray-700 my-8">
+        Tranzaksiyalar
+    </h1>
+
+    {% if request.user.transaction_set.all %}
+
+        <div class="space-y-4">
+
+            {% for transaction in request.user.transaction_set.all %}
+            <div class="w-full md:w-2/3 mx-auto flex items-center gap-4 py-4 px-6 border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition bg-white">
+
+                <!-- index -->
+                <span class="text-gray-500 font-semibold">
+                    {{ forloop.counter }})
+                </span>
+
+                <!-- product name -->
+                <span class="font-semibold text-gray-800">
+                    {{ transaction.product_name }}
+                </span>
+
+                <!-- amount -->
+                <span class="text-red-500 font-bold">
+                    - ${{ transaction.amount }}
+                </span>
+
+                <!-- date -->
+                <span class="ms-auto text-sm text-gray-500">
+                    {{ transaction.created }}
+                </span>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <p class="text-center text-gray-500 text-lg mt-10">
+            Hali tranzaksiyalar yo‘q
+        </p>
+
+    {% endif %}
+
+</div>
+{% endblock content %}
